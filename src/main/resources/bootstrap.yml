@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: sip-cd
+  profiles:
+    active: ${ENV:dev}
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+sip:
+  app: sip-cd
+  secret: sip-cd
+  datasource:
+    expression: execution(* com.basicfu.sip.*.service.*Service.*(..))
